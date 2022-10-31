@@ -26,19 +26,23 @@ static int	count_num(unsigned int nbr)
 	return (count);
 }
 
-static void	ft_putnbr_fd(unsigned int n)
+static int	ft_putnbr_fd(unsigned int n)
 {
 	if (n > 9)
 	{
 		ft_putnbr_fd(n / 10);
-		ft_putchar(n % 10 + 48);
+		if (ft_putchar(n % 10 + 48) < 0)
+			return (-2);
 	}
 	else
-		ft_putchar(n + 48);
+		if (ft_putchar(n + 48) < 0)
+			return (-2);
+	return (0);
 }
 
 int ft_putunint(unsigned int n)
 {
-	ft_putnbr_fd(n);
+	if (ft_putnbr_fd(n) < 0)
+		return (-2);
 	return (count_num(n));
 }

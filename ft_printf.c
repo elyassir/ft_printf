@@ -4,6 +4,7 @@ int ft_printf(const char *str, ...)
 {
     int i;
     int ret;
+    int ret2;
     va_list ptr;
 
     i = 0;
@@ -12,7 +13,13 @@ int ft_printf(const char *str, ...)
     while (str[i])
     {
         while (str[i] != '%' && str[i] != '\0')
+        {
+            ret2 = ret;
             ret += ft_putchar(str[i++]);
+            if(ret2 > ret)
+                return (-1);
+        }
+        ret2 = ret;
         if (str[i] == '\0')
             return (ret);
         if (str[i + 1] == 'c')
@@ -29,6 +36,8 @@ int ft_printf(const char *str, ...)
             ret += ft_putunint(va_arg(ptr, unsigned int));
         else if (str[i + 1] == '%')
             ret += ft_putchar('%');
+        if (ret2 > ret)
+            return (-1);
         i += 2;
     }
     va_end(ptr);

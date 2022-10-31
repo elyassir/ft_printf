@@ -20,12 +20,14 @@ int	ft_putstr(char *s)
 	i = 0;
 	if (s == NULL)
 	{
-		ft_putstr("(null)");
+		if (ft_putstr("(null)") < 0)
+			return (-2);
 		return (6);
 	}
 	while (s[i])
 	{
-		write(1, &s[i], 1);
+		if (write(1, &s[i], 1) < 0)
+			return (-1);
 		i++;
 	}
 	return (i);

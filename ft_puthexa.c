@@ -25,19 +25,31 @@ static int	count_num_hexa(unsigned int nbr)
 	return (count);
 }
 
-static void ft_printhexa_fd(unsigned int i, char a)
+static int ft_printhexa_fd(unsigned int i, char a)
 {
     if (i >= 16)
         ft_printhexa_fd(i / 16, a);
     if (a == 'x')
-        ft_putchar("0123456789abcdef"[i % 16]);
+    {
+		if (ft_putchar("0123456789abcdef"[i % 16]) < 0)
+		{
+			return (-1);
+		}
+	}
     else if (a == 'X')
-        ft_putchar("0123456789ABCDEF"[i % 16]);
+	{
+        if (ft_putchar("0123456789ABCDEF"[i % 16]) < 0)
+		{
+			return (-1);
+		}
+	}
+	return (0);
 }
 
 int ft_puthexa(int n, char a)
 {
-	ft_printhexa_fd(n, a);
+	if (ft_printhexa_fd(n, a) < 0)
+		return(-1);
 	return (count_num_hexa(n));
 }
 

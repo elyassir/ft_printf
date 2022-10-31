@@ -26,18 +26,22 @@ static int	count_num_hexa_ptr(size_t nbr)
 	return (count);
 }
 
-static void ft_printhexa_ptr(size_t i)
+static int ft_printhexa_ptr(size_t i)
 {
     if (i >= 16)
         ft_printhexa_ptr(i / 16);
-    ft_putchar("0123456789abcdef"[i % 16]);
+    if(ft_putchar("0123456789abcdef"[i % 16]) < 0)
+		return (-2);
+	return (0);
 }
 
 int ft_putptr(void *b)
 {
     size_t a;
     a = (size_t)b;
-    ft_putstr("0x");
-	ft_printhexa_ptr(a);
+    if (ft_putstr("0x") < 0)
+		return (-2);
+	if (ft_printhexa_ptr(a) < 0)
+		return (-2);
 	return (2 + count_num_hexa_ptr(a));
 }

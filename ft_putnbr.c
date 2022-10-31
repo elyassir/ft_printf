@@ -32,29 +32,35 @@ static int	count_num(int nbr)
 	return (count);
 }
 
-static void	ft_putnbr_fd(int n)
+static int	ft_putnbr_fd(int n)
 {
 	if (n == -2147483648)
 	{
-		write(1, "-2147483648", 11);
-		return ;
+		if (write(1, "-2147483648", 11) < 0)
+			return (-1);
+		return (0);
 	}
 	if (n < 0)
 	{
-		ft_putchar('-');
+		if (ft_putchar('-') < 0)
+			return (-1);
 		ft_putnbr_fd(-n);
 	}
 	else if (n > 9)
 	{
 		ft_putnbr_fd(n / 10);
-		ft_putchar(n % 10 + 48);
+		if (ft_putchar(n % 10 + 48) < 0)
+			return (-1);
 	}
 	else
-		ft_putchar(n + 48);
+		if (ft_putchar(n + 48) < 0)
+			return (-1);
+	return (0);
 }
 
 int ft_putnbr(int n)
 {
-	ft_putnbr_fd(n);
+	if (ft_putnbr_fd(n) < 0)
+		return (-1);
 	return (count_num(n));
 }
