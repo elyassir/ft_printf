@@ -11,20 +11,23 @@
 # **************************************************************************** #
 
 NAME = libftprintf.a
-SRC = ft_printf.c ft_puchar.c ft_putstr.c ft_puthexa.c ft_putnbr.c ft_putptr.c ft_putunint.c
-OBJ = $(SRC:.c=.o)
+SRCS = ft_printf.c ft_putchar.c ft_putstr.c ft_puthexa.c ft_putnbr.c ft_putptr.c ft_putunint.c
+OBJS		= $(SRCS:.c=.o)
 CC = cc
-CFLAGS = -Wall -Wextra -Werror 
+CFLAGS = -Wall -Wextra -Werror
+
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
-	ar -rc $(NAME) $(OBJ)
+$(NAME): $(OBJS)
+	ar -rc $(NAME) $(OBJS)
 
 clean:
-	rm -f $(OBJ)
+	rm -f $(OBJS)
 
-fclean:
+fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
+
+.PHONY: clean fclean bonus all

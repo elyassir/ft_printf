@@ -55,6 +55,6 @@ static void	ft_putnbr_fd(int n)
 
 int ft_putnbr(int n)
 {
-	ft_putnbr(n);
+	ft_putnbr_fd(n);
 	return (count_num(n));
 }
