@@ -33,8 +33,10 @@ static void ft_printhexa_ptr(size_t i)
     ft_putchar("0123456789abcdef"[i % 16]);
 }
 
-int ft_putptr(int n, char a)
+int ft_putptr(void *b)
 {
-	ft_printhexa_ptr(n);
-	return (count_num_hexa_ptr(n));
+    size_t a;
+    a = (size_t)b;
+	ft_printhexa_ptr(a);
+	return (count_num_hexa_ptr(a));
 }

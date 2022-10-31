@@ -12,7 +12,7 @@
 
 NAME = libftprintf.a
 SRC = ft_printf.c ft_puchar.c ft_putstr.c ft_puthexa.c ft_putnbr.c ft_putptr.c ft_putunint.c
-OBJ = ${SRC:.c=.o}
+OBJ = $(SRC:.c=.o)
 CC = cc
 CFLAGS = -Wall -Wextra -Werror 
 

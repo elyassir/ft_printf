@@ -1,6 +1,6 @@
 #include "ft_printf.h"
 
-int ft_printf(char **str, ...)
+int ft_printf(char *str, ...)
 {
     int i;
     int ret;
@@ -18,7 +18,7 @@ int ft_printf(char **str, ...)
         else if (str[i + 1] == 'c')
             ret += ft_putchar(va_arg(ptr, int));
         else if (str[i + 1] == 's')
-            ret += ft_putstr(va_arg(ptr, char *);
+            ret += ft_putstr(va_arg(ptr, char *));
         else if (str[i + 1] == 'i' || str[i + 1] == 'd')
             ret += ft_putnbr(va_arg(ptr, int));
         else if (str[i + 1] == 'p')
