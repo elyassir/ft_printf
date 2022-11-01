@@ -6,7 +6,7 @@
 /*   By: yel-mass <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 09:27:49 by yel-mass          #+#    #+#             */
-/*   Updated: 2022/10/31 09:29:10 by yel-mass         ###   ########.fr       */
+/*   Updated: 2022/11/01 15:49:00 by yel-mass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static int	ft_putnbr_fd(int n)
 	else if (n > 9)
 	{
 		if (ft_putnbr_fd(n / 10) < 0)
-			return(-1);
+			return (-1);
 		if (ft_putchar(n % 10 + 48) < 0)
 			return (-1);
 	}
@@ -60,7 +60,7 @@ static int	ft_putnbr_fd(int n)
 	return (0);
 }
 
-int ft_putnbr(int n)
+int	ft_putnbr(int n)
 {
 	if (ft_putnbr_fd(n) < 0)
 		return (-1);

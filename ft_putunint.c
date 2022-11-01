@@ -6,12 +6,11 @@
 /*   By: yel-mass <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 10:16:45 by yel-mass          #+#    #+#             */
-/*   Updated: 2022/10/31 10:16:56 by yel-mass         ###   ########.fr       */
+/*   Updated: 2022/11/01 18:32:24 by yel-mass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
 
 static int	count_num(unsigned int nbr)
 {
@@ -43,7 +42,7 @@ static int	ft_putnbr_fd(unsigned int n)
 	return (0);
 }
 
-int ft_putunint(unsigned int n)
+int	ft_putunint(unsigned int n)
 {
 	if (ft_putnbr_fd(n) < 0)
 		return (-1);
