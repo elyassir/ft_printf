@@ -44,11 +44,13 @@ static int	ft_putnbr_fd(int n)
 	{
 		if (ft_putchar('-') < 0)
 			return (-1);
-		ft_putnbr_fd(-n);
+		if (ft_putnbr_fd(-n) < 0)
+			return (-1);
 	}
 	else if (n > 9)
 	{
-		ft_putnbr_fd(n / 10);
+		if (ft_putnbr_fd(n / 10) < 0)
+			return(-1);
 		if (ft_putchar(n % 10 + 48) < 0)
 			return (-1);
 	}

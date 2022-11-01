@@ -30,19 +30,22 @@ static int	ft_putnbr_fd(unsigned int n)
 {
 	if (n > 9)
 	{
-		ft_putnbr_fd(n / 10);
+		if (ft_putnbr_fd(n / 10) < 0)
+			return (-1);
 		if (ft_putchar(n % 10 + 48) < 0)
-			return (-2);
+			return (-1);
 	}
 	else
+	{
 		if (ft_putchar(n + 48) < 0)
-			return (-2);
+			return (-1);
+	}
 	return (0);
 }
 
 int ft_putunint(unsigned int n)
 {
 	if (ft_putnbr_fd(n) < 0)
-		return (-2);
+		return (-1);
 	return (count_num(n));
 }

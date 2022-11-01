@@ -28,20 +28,17 @@ static int	count_num_hexa(unsigned int nbr)
 static int ft_printhexa_fd(unsigned int i, char a)
 {
     if (i >= 16)
-        ft_printhexa_fd(i / 16, a);
+        if (ft_printhexa_fd(i / 16, a) < 0)
+			return (-1);
     if (a == 'x')
     {
 		if (ft_putchar("0123456789abcdef"[i % 16]) < 0)
-		{
 			return (-1);
-		}
 	}
     else if (a == 'X')
 	{
         if (ft_putchar("0123456789ABCDEF"[i % 16]) < 0)
-		{
 			return (-1);
-		}
 	}
 	return (0);
 }
