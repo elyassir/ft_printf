@@ -6,14 +6,13 @@
 /*   By: yel-mass <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 17:10:44 by yel-mass          #+#    #+#             */
-/*   Updated: 2022/11/01 18:32:06 by yel-mass         ###   ########.fr       */
+/*   Updated: 2022/11/03 15:46:30 by yel-mass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <limits.h>
 
-int	cheack(va_list arg, char format)
+int	check(va_list arg, char format)
 {
 	int	ret;
 
@@ -32,6 +31,8 @@ int	cheack(va_list arg, char format)
 		ret = ft_putunint(va_arg(arg, unsigned int));
 	else if (format == '%')
 		ret = ft_putchar('%');
+	else
+		ret = ft_putchar(format);
 	return (ret);
 }
 
@@ -51,9 +52,9 @@ int	ft_printf(const char *str, ...)
 			if (ft_putchar(str[i++]) < 0)
 				return (-1);
 		ret2 = ret;
-		if (str[i] == '\0')
+		if (str[i] == '\0' || str[i + 1] == '\0')
 			return (ret);
-		ret += cheack(ptr, str[i + 1]);
+		ret += check(ptr, str[i + 1]);
 		if (ret2 > ret)
 			return (-1);
 		i += 2;
